@@ -20,4 +20,4 @@ RUN set -eux; \
       chown -R s3s.s3s /opt/s3s
 WORKDIR /opt/s3s
 USER s3s
-ENTRYPOINT ["/entrypoint.sh", "python", "/opt/s3s/s3s.py"]
+ENTRYPOINT ["/entrypoint.sh", "python", "/opt/s3s/s3s.py", "-M"]
