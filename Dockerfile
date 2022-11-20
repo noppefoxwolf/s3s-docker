@@ -6,7 +6,9 @@ RUN set -eux; \
 WORKDIR /opt/s3s
 
 # install gcc for mmh3
-RUN apk --update add gcc
+RUN apk --update add \
+    gcc \
+    build-base
 
 RUN set -eux; \
       pip install -r requirements.txt
