@@ -1,4 +1,12 @@
 FROM python:3.11-alpine as build
+
+RUN apk --update add \
+    gcc \
+    musl-dev \
+    linux-headers \
+    build-base \
+    libffi-dev
+
 WORKDIR /tmp
 RUN set -eux; \
       wget https://github.com/frozenpandaman/s3s/archive/refs/heads/master.zip -O s3s.zip && \
@@ -12,7 +20,6 @@ RUN set -eux; \
 
 FROM python:3.11-alpine
 LABEL maintainer="issei-m (https://twitter.com/Issei_M)"
-RUN apk add --no-cache gcc libc-dev
 RUN addgroup -S -g 1000 s3s && adduser -S -G s3s -u 999 s3s
 COPY --from=build /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
 COPY docker-entrypoint.sh /entrypoint.sh
