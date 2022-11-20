@@ -6,12 +6,7 @@ RUN set -eux; \
 WORKDIR /opt/s3s
 
 # install gcc for mmh3
-RUN apk --update add \
-    gcc \
-    musl-dev \
-    linux-headers \
-    build-base \
-    libffi-dev
+RUN apk --update add gcc
 
 RUN set -eux; \
       pip install -r requirements.txt
