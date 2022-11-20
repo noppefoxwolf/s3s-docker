@@ -12,7 +12,8 @@ RUN set -eux; \
 
 FROM python:3.11-alpine
 LABEL maintainer="issei-m (https://twitter.com/Issei_M)"
-RUN yum install python3-devel
+RUN set -eux; \
+      yum install python3-devel
 RUN addgroup -S -g 1000 s3s && adduser -S -G s3s -u 999 s3s
 COPY --from=build /usr/local/lib/python3.10/site-packages /usr/local/lib/python3.10/site-packages
 COPY docker-entrypoint.sh /entrypoint.sh
