@@ -1,5 +1,6 @@
 FROM python:3.10-alpine as build
 WORKDIR /tmp
+RUN apt-get install -y gcc
 RUN set -eux; \
       wget https://github.com/frozenpandaman/s3s/archive/refs/heads/master.zip -O s3s.zip && \
       unzip s3s.zip && rm s3s.zip && mv s3s* /opt/s3s
